@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "dev-get": "node ./src/GetHolder.js",
-    "dev-airdrop": "node ./src/SendBox.js",
+    "dev-airdrop": "node ./src/AirDrop.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,6 +19,7 @@
   "homepage": "https://github.com/RyuK-H/klaytn-HolderToJson#readme",
   "dependencies": {
     "axios": "^0.21.1",
+    "caver-js": "^1.5.5",
     "fs": "0.0.1-security"
   },
   "devDependencies": {
