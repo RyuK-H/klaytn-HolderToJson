@@ -5,6 +5,7 @@
   "scripts": {
     "dev-get": "node ./src/GetHolder.js",
     "dev-airdrop": "node ./src/AirDrop.js",
+    "dev-export": "node ./src/ExportHolderData.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
