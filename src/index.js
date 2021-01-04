@@ -1,6 +1,6 @@
 const axios = require('axios');
 const fs = require('fs');
-let holdersData;
+let holdersData = [];
 const MAX_PAGE = 1;
 
 const getHolders = async (page) => {
@@ -15,7 +15,13 @@ const holdersToJSON = async (page) => {
   const holders = await getHolders(page);
 
   if (holders.data) {
-    console.log(holders.data.result);
+    for(let i = 0; i < holders.data.result.length; i++) {
+      const temp = {
+        address: holders.data.result[i].address,
+        amount: holders.data.result[i].amountHeld,
+      }
+      holdersData.push(temp);
+    }
   }
 };
 
@@ -24,8 +30,7 @@ const loopGETHolder = async () => {
     await holdersToJSON(i);
   }
   
-  console.log("Write JSON");
-  // await writeJSON();
+  await writeJSON();
 }
 
 const writeJSON = async () => {

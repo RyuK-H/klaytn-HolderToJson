@@ -20,5 +20,11 @@
   "dependencies": {
     "axios": "^0.21.1",
     "fs": "0.0.1-security"
+  },
+  "devDependencies": {
+    "eslint": "^7.17.0",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-prettier": "^3.3.0",
+    "prettier": "^2.2.1"
   }
 }
