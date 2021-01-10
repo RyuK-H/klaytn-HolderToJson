@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
+    "dev": "node ./src/index.js",
     "dev-get": "node ./src/GetHolder.js",
     "dev-airdrop": "node ./src/AirDrop.js",
     "dev-export": "node ./src/ExportHolderData.js",
@@ -22,6 +23,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "caver-js": "^1.5.5",
+    "caver-js-ext-kas": "^1.0.2",
     "fs": "0.0.1-security"
   },
   "devDependencies": {
