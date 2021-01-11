@@ -6,10 +6,10 @@ const config = require('../../config.js');
 const caver = new Caver(config.rpcURL);
 const contractInstance = new caver.klay.Contract(SIT_CONTRACT.abi, SIT_CONTRACT.address);
 
-const writeJSON = async (result) => {
+const writeJSON = async (num, result) => {
   const data = JSON.stringify(result);
 
-  fs.writeFile(`./data/holders.json`, data, (err) => {
+  fs.writeFile(`./data/${num}_holders.json`, data, (err) => {
     if (err) {
       throw err;
     }
@@ -21,10 +21,10 @@ const getHoldersAddress = async () => {
   let holders = [];
   let result = [];
 
-  for (let i = 0; i < 487; i++) {
+  for (let i = 9; i < 10; i++) {
     const option = {
-      fromBlock: 100000 * i, // 한 블록씩 중복이 생기지만, 상관 없으니 걍 고고 // 48637987
-      toBlock: i === 486 ? 'latest' : 100000 * (i + 1),
+      fromBlock: 5000000 * i, // 한 블록씩 중복이 생기지만, 상관 없으니 걍 고고 // 48670287
+      toBlock: i === 9 ? 'latest' : 5000000 * (i + 1),
     };
 
     console.log(`${option.fromBlock} ~ ${option.toBlock} 진입`);
@@ -36,19 +36,16 @@ const getHoldersAddress = async () => {
       });
     });
 
-    if (i !== 0) {
-      console.log(`${i}번째 중복 제거 작업 중`);
-      holders = holders.filter(function (a, i, self) {
-        return self.indexOf(a) === i;
-      });
-    }
+    console.log(`${i}번째 중복 제거 작업 중`);
+    holders = holders.filter(function (a, i, self) {
+      return self.indexOf(a) === i;
+    });
 
+    console.log('Processing Deduplication');
+    await writeJSON(i+1, holders);
+    holders = [];
     console.log(`${i} 완료`);
   }
-
-  console.log('Processing Deduplication');
-
-  await writeJSON(result);
 };
 
 module.exports = getHoldersAddress;
