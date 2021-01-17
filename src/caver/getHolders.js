@@ -21,10 +21,12 @@ const getHoldersAddress = async () => {
   let holders = [];
   let result = [];
 
-  for (let i = 9; i < 10; i++) {
+  for (let i = 10; i < 11; i++) {
     const option = {
-      fromBlock: 5000000 * i, // 한 블록씩 중복이 생기지만, 상관 없으니 걍 고고 // 48670287
-      toBlock: i === 9 ? 'latest' : 5000000 * (i + 1),
+      // fromBlock: 5000000 * i, // 한 블록씩 중복이 생기지만, 상관 없으니 걍 고고 // 48670287
+      // toBlock: i === 9 ? 'latest' : 5000000 * (i + 1),
+      fromBlock: 48670287,
+      toBlock: 'latest',
     };
 
     console.log(`${option.fromBlock} ~ ${option.toBlock} 진입`);
@@ -42,7 +44,7 @@ const getHoldersAddress = async () => {
     });
 
     console.log('Processing Deduplication');
-    await writeJSON(i+1, holders);
+    await writeJSON(i + 1, holders);
     holders = [];
     console.log(`${i} 완료`);
   }
