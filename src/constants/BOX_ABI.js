@@ -1,5 +1,5 @@
 module.exports = BOX_CONTRACT = {
-  address: '0x657E059474FC5a8AfA0EA30c5f98834ee1972F05',
+  address: '0x656f86dd0f3bc25af2d15855f2a2f142f9eaed87',
   abi: [
     {
       constant: false,

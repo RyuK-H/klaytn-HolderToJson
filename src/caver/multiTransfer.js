@@ -5,7 +5,7 @@ const caver = new Caver(config.rpcURL);
 const contractInstance = new caver.klay.Contract(BOX_CONTRACT.abi, BOX_CONTRACT.address);
 const senderPrivateKey = config.PRKEY;
 const wallet = caver.klay.accounts.wallet.add(senderPrivateKey);
-const MAX_GROUP = 354;
+const MAX_GROUP = 349;
 
 const transfer = async (addressList, balanceList) => {
   const encodedAbi = await contractInstance.methods.MultiTransfer(addressList, balanceList).encodeABI();
@@ -25,7 +25,7 @@ const transfer = async (addressList, balanceList) => {
 };
 
 const multiTransfer = async () => {
-  for (let i = 318; i <= MAX_GROUP; i++) {
+  for (let i = 1; i <= MAX_GROUP; i++) {
     const holdersData = await require(`../../data/balance/${i}_balance.json`);
     let addressList = [];
     let balanceList = [];
@@ -42,6 +42,7 @@ const multiTransfer = async () => {
     await transfer(addressList, balanceList);
     console.log(`${i}번째 완료`);
     console.log(`${addressList.length}에게 총 ${caver.utils.convertFromPeb(totalAmount, 'KLAY')} 전송`);
+    console.log('////////////////////////////////////////');
   }
 };
 
