@@ -9,5 +9,5 @@ const multiTransfer = require('./caver/multiTransfer');
 // integrated();
 // getUsersInfo();
 // divisionHolders();
-verifySnapShot();
-// multiTransfer();
+// verifySnapShot();
+multiTransfer();
